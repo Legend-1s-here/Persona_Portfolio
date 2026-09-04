@@ -27,6 +27,8 @@ function MenuScreen() {
       <P3Menu onNavigate={(page) => {
         if (page === 'github') {
           window.open('https://github.com/Legend-1s-here', '_blank', 'noopener,noreferrer')
+        } else if (page === 'sideproj') {
+          window.open('https://github.com/Legend-1s-here/Chronicle', '_blank', 'noopener,noreferrer')
         } else {
           navigate(`/${page}`)
         }
