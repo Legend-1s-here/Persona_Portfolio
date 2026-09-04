@@ -4,22 +4,82 @@ import defaultVideo from "./assets/main2.mp4";
 import defaultPoster from "./assets/main2-poster.webp";
 
 const ITEMS = [
-  { id: "i", badge: "I", title: "EDUCATION", subtitle: "University / Coursework", rank: 3 },
-  { id: "ii", badge: "II", title: "SKILLS", subtitle: "Frontend / Design / UI", rank: 4 },
-  { id: "iii", badge: "III", title: "PROJECTS", subtitle: "Featured Work", rank: 5 },
-  { id: "iv", badge: "IV", title: "EXPERIENCE", subtitle: "Internships / Roles", rank: 2 },
+  { id: "i",   badge: "I",   title: "EDUCATION",  subtitle: "B.Tech Computer Science / Eng.", rank: 4 },
+  { id: "ii",  badge: "II",  title: "SKILLS",     subtitle: "C++ / React / DSA / Algorithms", rank: 5 },
+  { id: "iii", badge: "III", title: "PROJECTS",   subtitle: "Chronicle / Persona / Drones",   rank: 5 },
+  { id: "iv",  badge: "IV",  title: "EXPERIENCE", subtitle: "CP Competitor / Open-Source",    rank: 4 },
 ];
 
-const EDUCATION_ROWS = [
-  { index: "01", title: "General Education", status: "Complete" },
-  { index: "02", title: "Computer Science Core", status: "In Progress" },
-  { index: "03", title: "Elective Track", status: "Queued" },
-  { index: "04", title: "Capstone Prep", status: "Pending" },
+const DETAILS_DATA = [
+  {
+    index: "01",
+    title: "ACADEMIC DOSSIER",
+    progress: "4/4",
+    rows: [
+      { index: "01", title: "B.Tech Computer Science & Eng.", status: "In Progress" },
+      { index: "02", title: "Data Structures & Algorithms in C++", status: "Mastered" },
+      { index: "03", title: "Web Architecture & Full-Stack Systems", status: "Active" },
+      { index: "04", title: "Robotics, Embedded Systems & AI", status: "Ongoing" },
+    ],
+    bullets: [
+      "- Rigorous coursework in Algorithms, Object-Oriented Design, and Systems.",
+      "- Deep focus on low-level memory efficiency, space/time complexity, and modular code.",
+      "- Consistently bridging foundational computer science theory with high-impact software builds.",
+    ],
+  },
+  {
+    index: "02",
+    title: "SKILL MATRIX & MASTERY",
+    progress: "S-RANK",
+    rows: [
+      { index: "01", title: "C++20 & Competitive Programming", status: "Expert" },
+      { index: "02", title: "React.js, Vite & Modern JavaScript", status: "Advanced" },
+      { index: "03", title: "Data Structures, Graphs & DP", status: "Optimal" },
+      { index: "04", title: "Git, Vercel, Embedded / Arduino & AI", status: "Proficient" },
+    ],
+    bullets: [
+      "- Algorithmic problem solving across Codeforces, CodeChef, LeetCode, and Codolio.",
+      "- Modern UI/UX development with hardware compositing, WebP/H.264 streaming, and animations.",
+      "- Hands-on hardware prototyping with Arduino flight controllers and sensor integration.",
+    ],
+  },
+  {
+    index: "03",
+    title: "FEATURED ARTIFACTS",
+    progress: "3/3",
+    rows: [
+      { index: "01", title: "Chronicle — Developer Platform", status: "Active" },
+      { index: "02", title: "Persona 3 Reload Web Portfolio", status: "Deployed" },
+      { index: "03", title: "Arduino Autonomous Drone System", status: "Built" },
+      { index: "04", title: "Algorithmic Solutions Repository", status: "Maintained" },
+    ],
+    bullets: [
+      "- Chronicle: Open-source project built for modern workflows and developer productivity.",
+      "- Persona 3 Portfolio: High-performance interactive portfolio with 90%+ media compression.",
+      "- Hardware Drones & AI: Custom micro-controller code with telemetry and flight stabilization.",
+    ],
+  },
+  {
+    index: "04",
+    title: "TRACK RECORD & ROLES",
+    progress: "LEVEL UP",
+    rows: [
+      { index: "01", title: "Competitive Programmer & Contestant", status: "Active" },
+      { index: "02", title: "Full-Stack & Interactive UI Engineer", status: "Ongoing" },
+      { index: "03", title: "Open-Source Software Contributor", status: "Regular" },
+      { index: "04", title: "Robotics & Hardware Developer", status: "Project-Based" },
+    ],
+    bullets: [
+      "- Active contest rounds across Div 2/3 rating ladders and contest platforms.",
+      "- Building production-grade web applications with scalable frontends and responsive UIs.",
+      "- Continuous learning, daily streak consistency, and autonomous project execution.",
+    ],
+  },
 ];
 
 export default function ResumePage({ src = defaultVideo, poster = defaultPoster }) {
   const navigate = useNavigate();
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -62,14 +122,6 @@ export default function ResumePage({ src = defaultVideo, poster = defaultPoster 
           clip-path: circle(0 at 50% 50%);
           animation: resume-entry-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           pointer-events: none;
-        }
-
-        .resume-entry-video {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
         }
 
         @keyframes resume-entry-reveal {
@@ -239,7 +291,7 @@ export default function ResumePage({ src = defaultVideo, poster = defaultPoster 
 
         .resume-subtitle {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 28px;
+          font-size: 26px;
           line-height: 1;
           letter-spacing: 1px;
           color: #041238;
@@ -263,7 +315,14 @@ export default function ResumePage({ src = defaultVideo, poster = defaultPoster 
             inset 0 0 0 1px rgba(133, 244, 255, 0.16),
             16px 16px 0 rgba(0, 6, 30, 0.55);
           overflow: hidden;
+          animation: resume-panel-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
+
+        @keyframes resume-panel-in {
+          0% { opacity: 0; transform: translateX(30px) scale(0.98); }
+          100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
         .resume-detail-panel::before {
           content: "";
           position: absolute;
@@ -293,13 +352,13 @@ export default function ResumePage({ src = defaultVideo, poster = defaultPoster 
         }
         .resume-detail-top-title {
           font-family: 'Anton', sans-serif;
-          font-size: 42px;
+          font-size: 38px;
           line-height: 0.92;
           letter-spacing: 1px;
         }
         .resume-detail-top-progress {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 42px;
+          font-size: 38px;
           letter-spacing: 2px;
           line-height: 1;
         }
@@ -334,45 +393,46 @@ export default function ResumePage({ src = defaultVideo, poster = defaultPoster 
         }
         .resume-detail-row-title {
           font-family: 'Anton', sans-serif;
-          font-size: 28px;
+          font-size: 24px;
           line-height: 1;
           color: #f2fcff;
         }
         .resume-detail-status {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
+          font-size: 20px;
           line-height: 1;
           letter-spacing: 1.1px;
           color: #06133b;
           background: #8df6ff;
-          padding: 7px 12px;
+          padding: 6px 12px;
           clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
         }
         .resume-detail-bottom {
           position: relative;
-          margin-top: 22px;
-          padding: 18px;
+          margin-top: 20px;
+          padding: 16px 18px;
           background: rgba(5, 13, 57, 0.97);
           clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
           box-shadow: inset 0 0 0 1px rgba(145, 239, 255, 0.12);
         }
         .resume-detail-bottom-title {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 30px;
+          font-size: 26px;
           letter-spacing: 2px;
           color: #91f5ff;
-          margin-bottom: 14px;
+          margin-bottom: 10px;
         }
         .resume-detail-bullets {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 8px;
         }
         .resume-detail-bullet {
           font-family: 'Anton', sans-serif;
-          font-size: 21px;
+          font-size: 19px;
           line-height: 1.15;
           color: #edfaff;
+          letter-spacing: 0.5px;
         }
 
         .resume-mobile-controls {
@@ -392,6 +452,31 @@ export default function ResumePage({ src = defaultVideo, poster = defaultPoster 
         }
 
         @media (max-width: 768px) {
+          .resume-stack {
+            width: 92vw;
+            top: 4vh;
+            left: 4vw;
+            transform: scale(0.95);
+          }
+
+          .resume-detail-panel {
+            top: 48vh;
+            left: 4vw;
+            right: 4vw;
+            width: auto;
+            min-height: auto;
+            max-height: 44vh;
+            padding: 14px;
+          }
+
+          .resume-detail-top-title {
+            font-size: 26px;
+          }
+
+          .resume-detail-row-title {
+            font-size: 18px;
+          }
+
           .resume-mobile-controls {
             position: fixed;
             left: 8px;
@@ -405,12 +490,11 @@ export default function ResumePage({ src = defaultVideo, poster = defaultPoster 
             pointer-events: all;
           }
         }
-
       `}</style>
 
       <div className="resume-overlay">
         <div className="resume-stack">
-          <div className={`resume-list-tag${mounted ? " mounted" : ""}`}>LIST</div>
+          <div className={`resume-list-tag${mounted ? " mounted" : ""}`}>DOSSIER</div>
           {ITEMS.map((item, index) => (
             <div
               key={item.id}
@@ -442,16 +526,16 @@ export default function ResumePage({ src = defaultVideo, poster = defaultPoster 
           ))}
         </div>
 
-        {active === 0 && (
-          <div className="resume-detail-panel">
+        {mounted && (
+          <div className="resume-detail-panel" key={`panel-${active}`}>
             <div className="resume-detail-top">
-              <div className="resume-detail-top-index">01</div>
-              <div className="resume-detail-top-title">EDUCATION LOG</div>
-              <div className="resume-detail-top-progress">7/5</div>
+              <div className="resume-detail-top-index">{DETAILS_DATA[active].index}</div>
+              <div className="resume-detail-top-title">{DETAILS_DATA[active].title}</div>
+              <div className="resume-detail-top-progress">{DETAILS_DATA[active].progress}</div>
             </div>
 
             <div className="resume-detail-list">
-              {EDUCATION_ROWS.map((row) => (
+              {DETAILS_DATA[active].rows.map((row) => (
                 <div className="resume-detail-row" key={row.index}>
                   <div className="resume-detail-row-index">{row.index}</div>
                   <div className="resume-detail-row-title">{row.title}</div>
@@ -461,16 +545,15 @@ export default function ResumePage({ src = defaultVideo, poster = defaultPoster 
             </div>
 
             <div className="resume-detail-bottom">
-              <div className="resume-detail-bottom-title">DETAILS</div>
+              <div className="resume-detail-bottom-title">S.E.E.S. ARCHIVE NOTES</div>
               <div className="resume-detail-bullets">
-                <div className="resume-detail-bullet">- Maintain progress across required classes and supporting work.</div>
-                <div className="resume-detail-bullet">- Track portfolio-ready projects tied to coursework and labs.</div>
-                <div className="resume-detail-bullet">- Keep materials prepared for internships, research, and review.</div>
+                {DETAILS_DATA[active].bullets.map((bullet, bi) => (
+                  <div className="resume-detail-bullet" key={bi}>{bullet}</div>
+                ))}
               </div>
             </div>
           </div>
         )}
-
       </div>
 
       <div className="resume-mobile-controls" aria-label="Resume mobile controls">
