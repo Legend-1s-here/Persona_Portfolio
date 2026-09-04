@@ -74,22 +74,12 @@ const ITEMS = [
 export default function AboutMe() {
   const [active, setActive]   = useState(0);
   const [mounted, setMounted] = useState(false);
-  const [revealed, setRevealed] = useState(false);
+  const [revealed, setRevealed] = useState(true);
   const navigate = useNavigate();
 
-  const isMobileViewport =
-    typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches;
-
   const handleBarClick = (index) => {
-    if (isMobileViewport && active === index) {
-      setRevealed((prev) => !prev);
-      return;
-    }
-
     setActive(index);
-    if (isMobileViewport) {
-      setRevealed(false);
-    }
+    setRevealed(true);
   };
 
   useEffect(() => {

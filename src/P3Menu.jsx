@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
 const ITEMS = [
-  { id: "about",   label: "ABOUT ME",      page: "about",   fontSize: 80, offsetX: 0,  offsetY: 0,  skew: -6,  skewY: 10  },
-  { id: "resume",  label: "RESUME",        page: "resume",  fontSize: 66, offsetX: 20, offsetY: 8,  skew: -11, skewY: -10 },
-  { id: "github",  label: "GITHUB LINK",   page: "github",  url: "https://github.com/Legend-1s-here", fontSize: 68, offsetX: 8, offsetY: 6,  skew: 0, skewY: -4  },
-  { id: "socials", label: "SOCIALS",       page: "socials", fontSize: 74, offsetX: 16, offsetY: 8,  skew: -3,  skewY: 5   },
-  { id: "sideproj",label: "SIDE PROJECTS", page: "sideproj", url: "https://github.com/Legend-1s-here/Chronicle", fontSize: 56, offsetX: 10, offsetY: 6,  skew: -4,  skewY: 7   },
+  { id: "about",   num: "01", label: "ABOUT ME",      page: "about",   fontSize: 80, offsetX: 0,  offsetY: 0,  skew: -6,  skewY: 10  },
+  { id: "resume",  num: "02", label: "RESUME",        page: "resume",  fontSize: 66, offsetX: 20, offsetY: 8,  skew: -11, skewY: -10 },
+  { id: "github",  num: "03", label: "GITHUB LINK",   page: "github",  url: "https://github.com/Legend-1s-here", fontSize: 68, offsetX: 8, offsetY: 6,  skew: 0, skewY: -4  },
+  { id: "socials", num: "04", label: "CP & SOCIALS",  page: "socials", fontSize: 74, offsetX: 16, offsetY: 8,  skew: -3,  skewY: 5   },
+  { id: "sideproj",num: "05", label: "SIDE PROJECTS", page: "sideproj", url: "https://github.com/Legend-1s-here/Chronicle", fontSize: 56, offsetX: 10, offsetY: 6,  skew: -4,  skewY: 7   },
 ];
 
 const CLIP_SHAPES = [
@@ -27,7 +27,7 @@ export default function P3Menu({ onNavigate }) {
   };
 
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 1000);
+    const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, []);
 
@@ -175,6 +175,11 @@ export default function P3Menu({ onNavigate }) {
         }
         .p3-row.active .p3-label-bright { opacity: 1; }
 
+        .p3-mobile-num,
+        .p3-mobile-arrow {
+          display: none;
+        }
+
         .p3-hint {
           position: absolute;
           bottom: 24px; right: 28px;
@@ -219,6 +224,159 @@ export default function P3Menu({ onNavigate }) {
         .p3-name-tag span:first-child {
           color: rgba(0, 0, 0, 0.86);
         }
+
+        /* ─────────────────────────────────────────────────────────────
+           DEDICATED MOBILE PORTRAIT UI
+           ───────────────────────────────────────────────────────────── */
+        @media (max-width: 768px) and (orientation: portrait), (max-width: 580px) {
+          .p3-overlay {
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            padding: max(20px, env(safe-area-inset-top)) 18px max(24px, env(safe-area-inset-bottom)) 18px !important;
+            pointer-events: none !important;
+          }
+
+          .p3-stripe, .p3-stripe2 {
+            display: none !important;
+          }
+
+          .p3-name-tag {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            transform: none !important;
+            font-size: clamp(38px, 11vw, 56px) !important;
+            line-height: 0.88 !important;
+            letter-spacing: 1px !important;
+            margin-top: 10px !important;
+            margin-bottom: 16px !important;
+            align-self: flex-start !important;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.8) !important;
+          }
+
+          .p3-name-tag span:first-child {
+            color: #ffffff !important;
+            -webkit-text-stroke: 1px #000;
+          }
+
+          .p3-name-tag span:last-child {
+            color: #ff3355 !important;
+            letter-spacing: 2.5px !important;
+          }
+
+          .p3-menu {
+            position: relative !important;
+            width: 100% !important;
+            max-width: 440px !important;
+            padding: 0 !important;
+            gap: 12px !important;
+            transform: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            justify-content: center !important;
+            flex: 1 !important;
+            pointer-events: auto !important;
+          }
+
+          .p3-row {
+            width: 100% !important;
+            height: 60px !important;
+            margin: 0 !important;
+            transform: none !important;
+            opacity: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+            background: rgba(8, 16, 52, 0.9) !important;
+            border: 1px solid rgba(133, 244, 255, 0.28) !important;
+            clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+            pointer-events: auto !important;
+          }
+
+          .p3-row.active {
+            background: #ffffff !important;
+            border-color: #c4001a !important;
+            box-shadow: 8px 6px 0 #c4001a, 0 8px 24px rgba(0,0,0,0.75) !important;
+            transform: translateX(6px) !important;
+          }
+
+          .p3-glow {
+            display: none !important;
+          }
+
+          .p3-skew-wrap {
+            transform: none !important;
+            width: 100% !important;
+            height: 100% !important;
+            padding: 0 16px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+          }
+
+          .p3-shadow-tri,
+          .p3-highlight {
+            display: none !important;
+          }
+
+          .p3-label-wrap {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            width: 100% !important;
+            opacity: 1 !important;
+          }
+
+          .p3-mobile-num {
+            display: inline-block !important;
+            font-family: 'Anton', sans-serif !important;
+            font-size: 22px !important;
+            color: #85f4ff !important;
+            letter-spacing: 1px !important;
+            margin-right: 14px !important;
+            transition: color 0.15s ease !important;
+          }
+          .p3-row.active .p3-mobile-num {
+            color: #c4001a !important;
+          }
+
+          .p3-label-base {
+            font-family: 'Anton', sans-serif !important;
+            font-size: clamp(22px, 6.2vw, 28px) !important;
+            letter-spacing: 2px !important;
+            line-height: 1 !important;
+          }
+
+          .p3-label-dark {
+            color: #eefbff !important;
+          }
+          .p3-row.active .p3-label-dark {
+            color: #0b1138 !important;
+          }
+
+          .p3-label-bright {
+            display: none !important;
+          }
+
+          .p3-mobile-arrow {
+            display: inline-block !important;
+            font-family: 'Bebas Neue', sans-serif !important;
+            font-size: 22px !important;
+            color: #85f4ff !important;
+            transition: color 0.15s ease, transform 0.15s ease !important;
+          }
+          .p3-row.active .p3-mobile-arrow {
+            color: #c4001a !important;
+            transform: translateX(4px) !important;
+          }
+
+          .p3-hint {
+            display: none !important;
+          }
+        }
       `}</style>
 
       <div className="p3-overlay">
@@ -246,7 +404,7 @@ export default function P3Menu({ onNavigate }) {
                 style={{
                   marginRight: item.offsetX,
                   marginTop: item.offsetY,
-                  transitionDelay: mounted ? `${i * 80}ms` : "0ms",
+                  transitionDelay: mounted ? `${i * 60}ms` : "0ms",
                 }}
                 onClick={(e) => {
                   e.preventDefault();
@@ -257,6 +415,7 @@ export default function P3Menu({ onNavigate }) {
                   }
                 }}
                 onMouseEnter={() => activate(i)}
+                onTouchStart={() => activate(i)}
                 aria-current={isActive ? "page" : undefined}
               >
                 <div className="p3-glow" />
@@ -283,6 +442,7 @@ export default function P3Menu({ onNavigate }) {
                     }}
                   />
                   <div className="p3-label-wrap" style={{ opacity }}>
+                    <span className="p3-mobile-num">{item.num} //</span>
                     <span className="p3-label-base p3-label-dark" style={{ fontSize: item.fontSize }}>
                       {item.label}
                     </span>
@@ -296,6 +456,7 @@ export default function P3Menu({ onNavigate }) {
                       {item.label}
                     </span>
                   </div>
+                  <span className="p3-mobile-arrow">►</span>
                 </div>
               </a>
             );
