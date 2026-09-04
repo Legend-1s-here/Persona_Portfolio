@@ -10,38 +10,90 @@ import icon1 from "./assets/icon1.png";
 import icon2 from "./assets/icon2.png";
 import icon3 from "./assets/icon3.png";
 
-
-const CHARS = [char1, char2, char3];
+const CHARS = [char1, char2, char3, char1];
 
 const ROLES = [
-  { text: "LEADER", color: "#e8c100", bg: "rgba(232,193,0,0.12)", border: "rgba(232,193,0,0.5)" },
-  { text: "PARTY",  color: "#4a8fff", bg: "rgba(74,143,255,0.12)", border: "rgba(74,143,255,0.5)" },
-  { text: "PARTY",  color: "#4a8fff", bg: "rgba(74,143,255,0.12)", border: "rgba(74,143,255,0.5)" },
+  { text: "LEADER",  color: "#e8c100", bg: "rgba(232,193,0,0.12)", border: "rgba(232,193,0,0.5)" },
+  { text: "SOLVER",  color: "#4a8fff", bg: "rgba(74,143,255,0.12)", border: "rgba(74,143,255,0.5)" },
+  { text: "PARTY",   color: "#ff4a70", bg: "rgba(255,74,112,0.12)", border: "rgba(255,74,112,0.5)" },
+  { text: "SUPPORT", color: "#00f2ea", bg: "rgba(0,242,234,0.12)", border: "rgba(0,242,234,0.5)" },
 ];
 
 const ITEMS = [
   {
-    id: "twitch", label: "TWITCH", handle: "@yourname", href: "https://twitch.tv/yourname", icon: "🎮", barIcon: icon1, bars: 1, newBars: [0], counts: ["56"],
-    links: ["twitch.tv/videos/2041837265"],
+    id: "codechef",
+    label: "CODECHEF",
+    handle: "@priy_ansh63",
+    href: "https://www.codechef.com/users/priy_ansh63",
+    icon: "⚡",
+    barIcon: icon1,
     stats: [
-      { tag: "FOL", value: "1.2K", color: "#9147ff" },
-      { tag: "VWR", value: "042",  color: "#bf94ff" },
+      { tag: "DIV", value: "DIV 3", color: "#e8c100" },
+      { tag: "LANG", value: "C++", color: "#4a8fff" },
+    ],
+    cards: [
+      { text: "CONTEST PROBLEMS SOLVED IN C++", box: "SOLVED", count: "100+", url: "https://www.codechef.com/users/priy_ansh63", isNew: true },
+      { text: "STARTERS & COOK-OFF ROUNDS", box: "CONTEST", count: "RATED", url: "https://www.codechef.com/users/priy_ansh63" },
+      { text: "DATA STRUCTURES & ALGORITHMS", box: "TOPIC", count: "ADVANCED", url: "https://www.codechef.com/users/priy_ansh63", isNew: true },
+      { text: "COMPETITIVE CONTEST RATING", box: "RATING", count: "ACTIVE", url: "https://www.codechef.com/users/priy_ansh63" },
+      { text: "OPTIMIZED TIME & SPACE CODE", box: "SPEED", count: "O(N)", url: "https://www.codechef.com/users/priy_ansh63" },
     ],
   },
   {
-    id: "instagram", label: "INSTAGRAM", handle: "@yourhandle", href: "https://instagram.com/yourhandle", icon: "📷", barIcon: icon2, bars: 5, newBars: [1, 2], counts: ["3.4M", "2.5M", "676K", "412K", "198K"],
-    links: ["instagram.com/p/C4xQmRrNk2a", "instagram.com/p/C3wLpBsOj7f", "instagram.com/reel/C2vKoArMi6e", "instagram.com/p/C1uJnZqLh5d", "instagram.com/reel/C0tImYpKg4c"],
+    id: "codeforces",
+    label: "CODEFORCES",
+    handle: "@Legendishere",
+    href: "https://codeforces.com/profile/Legendishere",
+    icon: "⚔️",
+    barIcon: icon2,
     stats: [
-      { tag: "FOL", value: "3.4K", color: "#e1306c" },
-      { tag: "PST", value: "128",  color: "#f77737" },
+      { tag: "DIV", value: "DIV 2/3", color: "#ff4a70" },
+      { tag: "RND", value: "RATED", color: "#00f2ea" },
+    ],
+    cards: [
+      { text: "DIV. 2 & DIV. 3 ROUND PARTICIPANT", box: "LADDER", count: "ACTIVE", url: "https://codeforces.com/profile/Legendishere", isNew: true },
+      { text: "MATH & GREEDY PROBLEM SOLVING", box: "TOPIC", count: "OPTIMAL", url: "https://codeforces.com/profile/Legendishere" },
+      { text: "GRAPHS, TREES & DFS/BFS SEARCH", box: "ALGO", count: "SOLVED", url: "https://codeforces.com/profile/Legendishere", isNew: true },
+      { text: "CODEFORCES RATING LADDER", box: "RATING", count: "RANKED", url: "https://codeforces.com/profile/Legendishere" },
+      { text: "BINARY SEARCH & TWO POINTERS", box: "SKILL", count: "O(log N)", url: "https://codeforces.com/profile/Legendishere" },
     ],
   },
   {
-    id: "tiktok", label: "TIKTOK", handle: "@yourhandle", href: "https://tiktok.com/@yourhandle", icon: "🎵", barIcon: icon3, bars: 7, newBars: [0, 3, 5, 6], counts: ["5.1M", "3.7M", "2.2M", "1.4M", "831K", "490K", "217K"],
-    links: ["tiktok.com/@yourhandle/video/7318492016374859054", "tiktok.com/@yourhandle/video/7305837261940183342", "tiktok.com/@yourhandle/video/7291046385720348974", "tiktok.com/@yourhandle/video/7278392047163820334", "tiktok.com/@yourhandle/video/7264819203847165742", "tiktok.com/@yourhandle/video/7251047382916430126", "tiktok.com/@yourhandle/video/7237294018463851822"],
+    id: "leetcode",
+    label: "LEETCODE",
+    handle: "@Legend63",
+    href: "https://leetcode.com/u/Legend63",
+    icon: "🧩",
+    barIcon: icon3,
     stats: [
-      { tag: "FOL", value: "8.9K", color: "#00f2ea" },
-      { tag: "LKS", value: "52K",  color: "#ff0050" },
+      { tag: "DSA", value: "CORE", color: "#ffa116" },
+      { tag: "STR", value: "DAILY", color: "#00b8a3" },
+    ],
+    cards: [
+      { text: "ARRAYS, BITWISE & SEARCHING VECTORS", box: "DSA", count: "CORE", url: "https://leetcode.com/u/Legend63", isNew: true },
+      { text: "DYNAMIC PROGRAMMING & RECURSION", box: "ALGO", count: "OPTIMAL", url: "https://leetcode.com/u/Legend63" },
+      { text: "SLIDING WINDOW & TWO POINTERS", box: "TECH", count: "EXPERT", url: "https://leetcode.com/u/Legend63", isNew: true },
+      { text: "STACKS, QUEUES & LINKED LISTS", box: "STRUCT", count: "CLEAN", url: "https://leetcode.com/u/Legend63" },
+      { text: "DAILY CODING CHALLENGES", box: "STREAK", count: "ACTIVE", url: "https://leetcode.com/u/Legend63" },
+    ],
+  },
+  {
+    id: "codolio",
+    label: "CODOLIO",
+    handle: "@Legend_63",
+    href: "https://codolio.com/profile/Legend_63",
+    icon: "📊",
+    barIcon: icon1,
+    stats: [
+      { tag: "ALL", value: "UNIFIED", color: "#9147ff" },
+      { tag: "EXP", value: "TRACKED", color: "#4a8fff" },
+    ],
+    cards: [
+      { text: "UNIFIED DEVELOPER PORTFOLIO", box: "GLOBAL", count: "ALL-IN-1", url: "https://codolio.com/profile/Legend_63", isNew: true },
+      { text: "AGGREGATED CONTEST ANALYTICS", box: "TRACK", count: "LIVE", url: "https://codolio.com/profile/Legend_63" },
+      { text: "CROSS-PLATFORM SOLVED STATS", box: "TOTAL", count: "VERIFIED", url: "https://codolio.com/profile/Legend_63", isNew: true },
+      { text: "MULTI-LANGUAGE C++ & DS PORTFOLIO", box: "SKILL", count: "C++ / JS", url: "https://codolio.com/profile/Legend_63" },
+      { text: "ACCURACY & SPEED METRICS", box: "SCORE", count: "TOP %", url: "https://codolio.com/profile/Legend_63" },
     ],
   },
 ];
@@ -67,19 +119,30 @@ export default function Socials() {
         if (e.key === "ArrowUp")    setActive(i => Math.max(0, i - 1));
         if (e.key === "ArrowDown")  setActive(i => Math.min(ITEMS.length - 1, i + 1));
         if (e.key === "ArrowRight") { setFocus("right"); setActiveInfoBar(0); }
-        if (e.key === "Enter")      window.open(ITEMS[active].href, "_blank");
+        if (e.key === "Enter")      window.open(ITEMS[active].href, "_blank", "noopener,noreferrer");
       } else {
-        const barCount = ITEMS[active].bars;
+        const cardCount = ITEMS[active].cards.length;
         if (e.key === "ArrowUp")   setActiveInfoBar(i => Math.max(0, i - 1));
-        if (e.key === "ArrowDown") setActiveInfoBar(i => Math.min(barCount - 1, i + 1));
+        if (e.key === "ArrowDown") setActiveInfoBar(i => Math.min(cardCount - 1, i + 1));
         if (e.key === "ArrowLeft") setFocus("left");
-        if (e.key === "Enter")     window.open("https://" + ITEMS[active].links[activeInfoBar], "_blank");
+        if (e.key === "Enter") {
+          const cardUrl = ITEMS[active].cards[activeInfoBar]?.url || ITEMS[active].href;
+          window.open(cardUrl, "_blank", "noopener,noreferrer");
+        }
+      }
+      if (e.key.toLowerCase() === "q") {
+        setActive(i => (i - 1 + ITEMS.length) % ITEMS.length);
+        setActiveInfoBar(0);
+      }
+      if (e.key.toLowerCase() === "e") {
+        setActive(i => (i + 1) % ITEMS.length);
+        setActiveInfoBar(0);
       }
       if ((e.key === "ArrowLeft" && focus === "left") || e.key === "Escape" || e.key === "Backspace") navigate(-1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active, navigate, focus]);
+  }, [active, activeInfoBar, navigate, focus]);
 
   return (
     <div id="menu-screen">
@@ -112,7 +175,7 @@ export default function Socials() {
         .sc-bar {
           position: relative;
           width: 45vw;
-          height: 64px;
+          height: 62px;
           transition: height 0.3s cubic-bezier(0.22,1,0.36,1);
           background: #111;
           cursor: pointer;
@@ -129,19 +192,20 @@ export default function Socials() {
           transform: translateX(-100%);
           transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .sc-bar-outer.active .sc-bar     { height: 90px; }
-        .sc-bar-outer.active .sc-bar-red { height: 90px; }
+        .sc-bar-outer.active .sc-bar     { height: 86px; }
+        .sc-bar-outer.active .sc-bar-red { height: 86px; }
         .sc-bar-outer.mounted { transform: translateX(0); }
         .sc-bar-outer:nth-child(1) { transition-delay: 0ms; }
-        .sc-bar-outer:nth-child(2) { transition-delay: 80ms; }
-        .sc-bar-outer:nth-child(3) { transition-delay: 160ms; }
+        .sc-bar-outer:nth-child(2) { transition-delay: 60ms; }
+        .sc-bar-outer:nth-child(3) { transition-delay: 120ms; }
+        .sc-bar-outer:nth-child(4) { transition-delay: 180ms; }
 
         /* red underlay — peeks out below the bar when active */
         .sc-bar-red {
           position: absolute;
           top: 0; left: 0;
           width: 45vw;
-          height: 64px;
+          height: 62px;
           background: #c4001a;
           clip-path: polygon(50% 0, 100% 0, 100% 100%, calc(50% - 10px) 100%);
           transform: translateY(-7px);
@@ -208,7 +272,7 @@ export default function Socials() {
           align-items: center;
           flex-shrink: 0;
           font-family: 'Anton', sans-serif;
-          font-size: 50px;
+          font-size: 46px;
           letter-spacing: -2px;
           color: #ffffff;
           transform: rotate(-30deg);
@@ -217,19 +281,19 @@ export default function Socials() {
           padding: 0 16px 0 8px;
         }
 
-        /* left: icon + name centered in remaining space */
+        /* left: icon + name + handle centered in remaining space */
         .sc-main {
           flex: 1;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 3px;
+          gap: 2px;
         }
         .sc-main-top {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
         }
 
         .sc-icon {
@@ -238,22 +302,33 @@ export default function Socials() {
           width: 32px;
           text-align: center;
           flex-shrink: 0;
-          color: rgba(255,255,255,0.15);
+          color: rgba(255,255,255,0.25);
           transition: color 0.2s ease;
           user-select: none;
         }
-        .sc-bar-outer.active .sc-icon { color: rgba(255,255,255,0.25); }
+        .sc-bar-outer.active .sc-icon { color: rgba(0,0,0,0.7); }
 
         .sc-label {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 28px;
-          letter-spacing: 4px;
+          font-size: 26px;
+          letter-spacing: 3px;
           line-height: 1;
           color: rgba(255,255,255,0.85);
           transition: color 0.2s ease;
           user-select: none;
         }
         .sc-bar-outer.active .sc-label { color: #111111; }
+
+        .sc-handle {
+          font-family: 'Barlow Condensed', sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 2px;
+          color: rgba(255,255,255,0.4);
+          transition: color 0.2s ease;
+          user-select: none;
+        }
+        .sc-bar-outer.active .sc-handle { color: #c4001a; }
 
         /* lb/rb nav row */
         @keyframes sc-arrow-left {
@@ -316,7 +391,7 @@ export default function Socials() {
 
         .sc-stat-num {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 26px;
+          font-size: 24px;
           font-style: italic;
           line-height: 1;
           color: #ffffff;
@@ -387,6 +462,10 @@ export default function Socials() {
           background: none;
           border: none;
           padding: 0 6px;
+          transition: transform 0.15s ease;
+        }
+        .sc-right-nav .sc-nav-btn:hover {
+          transform: scale(1.08);
         }
         .sc-right-nav .sc-nav-label {
           font-family: 'Bebas Neue', sans-serif;
@@ -403,6 +482,10 @@ export default function Socials() {
           color: #c4001a;
           display: inline-block;
           user-select: none;
+          transition: transform 0.15s ease;
+        }
+        .sc-right-nav .sc-nav-arrow:hover {
+          transform: scale(1.2);
         }
         .sc-right-nav .sc-nav-arrow.left  { animation: sc-arrow-left  0.8s ease-in-out infinite; }
         .sc-right-nav .sc-nav-arrow.right { animation: sc-arrow-right 0.8s ease-in-out infinite; }
@@ -412,13 +495,13 @@ export default function Socials() {
           position: fixed;
           top: 132px;
           right: 0;
-          left: 65%;
+          left: 60%;
           bottom: 84px;
           z-index: 50;
           display: flex;
           flex-direction: column;
           gap: 6px;
-          padding: 8px 8px 8px 0;
+          padding: 8px 18px 8px 0;
           overflow-y: auto;
           overflow-x: hidden;
           pointer-events: none;
@@ -434,7 +517,7 @@ export default function Socials() {
           right: auto;
           left: auto;
           width: 100%;
-          height: 46px;
+          height: 48px;
           background: transparent;
           pointer-events: all;
           cursor: pointer;
@@ -451,10 +534,12 @@ export default function Socials() {
           position: relative;
           width: 100%;
           height: 100%;
-          background: transparent;
+          background: rgba(255,255,255,0.92);
           display: flex;
           align-items: center;
           overflow: hidden;
+          border-radius: 6px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
         .sc-info-bar-wrap.selected .sc-info-bar {
           background: #fff;
@@ -480,25 +565,28 @@ export default function Socials() {
         .sc-info-bar-text {
           flex: 1;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
-          letter-spacing: 2px;
+          font-size: 20px;
+          letter-spacing: 1.5px;
           color: #111;
-          padding: 0 14px;
+          padding: 0 12px;
           user-select: none;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .sc-info-bar-box {
           height: 70%;
           background: #000;
           display: flex;
           align-items: center;
-          padding: 0 12px;
+          padding: 0 10px;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 20px;
+          font-size: 16px;
           letter-spacing: 1px;
           color: #fff;
           flex-shrink: 0;
-          border-radius: 6px;
-          margin-right: 4px;
+          border-radius: 5px;
+          margin-right: 6px;
           user-select: none;
         }
 
@@ -506,7 +594,7 @@ export default function Socials() {
           height: 55%;
           width: auto;
           flex-shrink: 0;
-          margin-left: 14px;
+          margin-left: 12px;
           object-fit: contain;
           pointer-events: none;
           user-select: none;
@@ -514,10 +602,10 @@ export default function Socials() {
 
         .sc-info-bar-count {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
+          font-size: 20px;
           letter-spacing: 1px;
-          color: #111;
-          margin-right: 80px;
+          color: #c4001a;
+          margin-right: 20px;
           flex-shrink: 0;
           user-select: none;
         }
@@ -582,7 +670,7 @@ export default function Socials() {
           }
 
           .sc-info-bar-text {
-            font-size: 15px;
+            font-size: 14px;
             letter-spacing: 1px;
           }
 
@@ -616,23 +704,30 @@ export default function Socials() {
             key={item.id}
             className={`sc-bar-outer${active === i ? " active" : ""}${mounted ? " mounted" : ""}`}
             onClick={() => {
-              if (active === i) window.open(item.href, "_blank");
-              else setActive(i);
+              if (active === i) window.open(item.href, "_blank", "noopener,noreferrer");
+              else {
+                setActive(i);
+                setActiveInfoBar(0);
+              }
             }}
-            onMouseEnter={() => setActive(i)}
+            onMouseEnter={() => {
+              setActive(i);
+              setActiveInfoBar(0);
+            }}
           >
             <div className="sc-bar-red" />
             <div className="sc-bar">
-              <img className="sc-char" src={CHARS[i]} alt="" />
+              <img className="sc-char" src={CHARS[i % CHARS.length]} alt="" />
               <div className="sc-bar-fill" />
               <div className="sc-bar-shade" />
               <div className="sc-bar-content">
-                <div className="sc-role">{ROLES[i].text}</div>
+                <div className="sc-role">{ROLES[i % ROLES.length].text}</div>
                 <div className="sc-main">
                   <div className="sc-main-top">
                     <div className="sc-icon">{item.icon}</div>
                     <div className="sc-label">{item.label}</div>
                   </div>
+                  <div className="sc-handle">{item.handle}</div>
                 </div>
                 <div className="sc-stats">
                   {item.stats.map(s => (
@@ -656,38 +751,76 @@ export default function Socials() {
 
       {mounted && (
         <div className="sc-right-nav" key={active}>
-          <span className="sc-nav-arrow left">◄</span>
-          <span className="sc-nav-btn">LB</span>
+          <span
+            className="sc-nav-arrow left"
+            onClick={() => {
+              setActive(i => (i - 1 + ITEMS.length) % ITEMS.length);
+              setActiveInfoBar(0);
+            }}
+            style={{ cursor: "pointer", pointerEvents: "all" }}
+          >
+            ◄
+          </span>
+          <button
+            className="sc-nav-btn"
+            type="button"
+            onClick={() => {
+              setActive(i => (i - 1 + ITEMS.length) % ITEMS.length);
+              setActiveInfoBar(0);
+            }}
+            style={{ cursor: "pointer", pointerEvents: "all" }}
+          >
+            LB
+          </button>
           <span className="sc-nav-label">{ITEMS[active].label}</span>
-          <span className="sc-nav-btn">RB</span>
-          <span className="sc-nav-arrow right">►</span>
+          <button
+            className="sc-nav-btn"
+            type="button"
+            onClick={() => {
+              setActive(i => (i + 1) % ITEMS.length);
+              setActiveInfoBar(0);
+            }}
+            style={{ cursor: "pointer", pointerEvents: "all" }}
+          >
+            RB
+          </button>
+          <span
+            className="sc-nav-arrow right"
+            onClick={() => {
+              setActive(i => (i + 1) % ITEMS.length);
+              setActiveInfoBar(0);
+            }}
+            style={{ cursor: "pointer", pointerEvents: "all" }}
+          >
+            ►
+          </span>
         </div>
       )}
 
       {mounted && (
         <div className="sc-info-panel" key={`panel-${active}`}>
-          {Array.from({ length: ITEMS[active].bars }).map((_, i) => (
+          {ITEMS[active].cards.map((card, i) => (
             <div
               className={`sc-info-bar-wrap${activeInfoBar === i ? " selected" : ""}`}
               key={`bar-${active}-${i}`}
               style={{ animationDelay: `${i * 50}ms` }}
               onClick={() => {
                 if (isMobileViewport || activeInfoBar === i) {
-                  window.open("https://" + ITEMS[active].links[i], "_blank");
+                  window.open(card.url || ITEMS[active].href, "_blank", "noopener,noreferrer");
                   return;
                 }
                 setActiveInfoBar(i);
               }}
               onMouseEnter={() => setActiveInfoBar(i)}
             >
-              {ITEMS[active].newBars.includes(i) && (
+              {card.isNew && (
                 <img className="sc-info-bar-new" src={newsign} alt="" />
               )}
               <div className="sc-info-bar">
                 <img className="sc-info-bar-icon" src={ITEMS[active].barIcon} alt="" />
-                <span className="sc-info-bar-text">{ITEMS[active].links[i].slice(0, 10)}...</span>
-                <span className="sc-info-bar-box">VIEWS</span>
-                <span className="sc-info-bar-count">{ITEMS[active].counts[i]}</span>
+                <span className="sc-info-bar-text">{card.text}</span>
+                <span className="sc-info-bar-box">{card.box}</span>
+                <span className="sc-info-bar-count">{card.count}</span>
               </div>
             </div>
           ))}
@@ -696,6 +829,7 @@ export default function Socials() {
 
       <div className={`sc-footer${mounted ? " mounted" : ""}`}>
         <div className="sc-footer-row"><span className="sc-footer-key">↑↓</span><span>SELECT</span></div>
+        <div className="sc-footer-row"><span className="sc-footer-key">Q / E</span><span>SWITCH TAB</span></div>
         <div className="sc-footer-row"><span className="sc-footer-key">↵</span><span>OPEN</span></div>
         <div className="sc-footer-row"><span className="sc-footer-key">ESC</span><span>BACK</span></div>
       </div>
@@ -707,7 +841,7 @@ export default function Socials() {
         <button
           className="sc-mobile-btn"
           type="button"
-          onClick={() => window.open(ITEMS[active].href, "_blank")}
+          onClick={() => window.open(ITEMS[active].href, "_blank", "noopener,noreferrer")}
         >
           OPEN
         </button>
