@@ -2,9 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-body {
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
   background: #000;
   overflow: hidden;
 }
@@ -34,7 +38,9 @@ body {
   min-height: 100dvh;
 }
 
-/* Touch-friendly defaults for narrow screens */
+/* ─────────────────────────────────────────────────────────────
+   TABLETS & MEDIUM SCREENS (<= 1024px)
+   ───────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   #menu-screen,
   #main {
@@ -43,20 +49,20 @@ body {
 
   .p3-menu {
     padding: clamp(12px, 2.5vw, 24px) !important;
-    transform: scale(0.86);
-    transform-origin: center;
+    transform: scale(0.82);
+    transform-origin: center right;
   }
 
   .p3-name-tag {
-    font-size: clamp(56px, 9vw, 94px) !important;
-    top: clamp(6px, 2vw, 14px) !important;
-    left: clamp(8px, 2vw, 18px) !important;
+    font-size: clamp(52px, 8vw, 86px) !important;
+    top: clamp(8px, 2vh, 18px) !important;
+    left: clamp(10px, 2vw, 22px) !important;
     transform: rotate(12deg) !important;
   }
 
   .p3-hint {
     bottom: max(12px, env(safe-area-inset-bottom)) !important;
-    right: clamp(10px, 2.5vw, 18px) !important;
+    right: clamp(12px, 2.5vw, 20px) !important;
   }
 
   .resume-stack {
@@ -125,174 +131,289 @@ body {
     letter-spacing: 1px !important;
   }
 
+  .sc-info-panel {
+    left: 55% !important;
+  }
+
   .sc-info-bar-wrap {
-    left: 52% !important;
     height: clamp(38px, 5.2vh, 46px) !important;
   }
 }
 
+/* ─────────────────────────────────────────────────────────────
+   MOBILE & ANDROID DEVICES (<= 768px)
+   ───────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  body {
+  html, body {
     overflow: hidden;
     overscroll-behavior: none;
+    touch-action: pan-y;
+  }
+
+  /* 1. Main Menu Responsive */
+  .p3-overlay {
+    overflow: hidden;
   }
 
   .p3-menu {
-    transform: scale(0.66);
+    transform: scale(0.68) !important;
+    transform-origin: center right !important;
+    right: 4px !important;
   }
 
   .p3-row {
-    transform-origin: center;
+    margin-bottom: 2px !important;
+    pointer-events: all !important;
+    touch-action: manipulation;
   }
 
   .p3-name-tag {
-    font-size: clamp(44px, 10vw, 68px) !important;
+    font-size: clamp(40px, 11vw, 62px) !important;
     letter-spacing: 1px !important;
-    line-height: 0.9 !important;
+    line-height: 0.88 !important;
+    top: clamp(8px, 2.5vh, 20px) !important;
+    left: clamp(10px, 3.5vw, 20px) !important;
+    transform: rotate(10deg) !important;
   }
 
   .p3-hint {
-    font-size: 11px !important;
-    gap: 2px !important;
+    display: none !important;
   }
 
-  .p3-hint-row {
-    font-size: 10px !important;
-    letter-spacing: 1px !important;
-  }
-
+  /* 2. Resume Dossier Mobile */
   .resume-overlay {
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-bottom: max(20px, env(safe-area-inset-bottom));
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    pointer-events: auto !important;
+    height: 100dvh !important;
+    padding-bottom: 74px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .resume-stack {
     position: relative !important;
-    width: min(96vw, 620px) !important;
     top: 0 !important;
     left: 0 !important;
-    margin: 10px auto 0 auto !important;
+    width: 94vw !important;
+    margin: 12px auto 0 auto !important;
+    transform: none !important;
+    gap: 6px !important;
+    pointer-events: auto !important;
   }
 
   .resume-list-tag {
-    font-size: clamp(46px, 12vw, 76px) !important;
-    margin-left: 8px !important;
+    font-size: clamp(38px, 10vw, 56px) !important;
+    margin: 0 0 4px 6px !important;
+    line-height: 1 !important;
+  }
+
+  .resume-card-wrap {
+    pointer-events: auto !important;
   }
 
   .resume-card {
-    height: clamp(72px, 13vw, 96px) !important;
+    height: 68px !important;
   }
 
   .resume-card-inner {
-    padding: 10px 14px 10px 44px !important;
+    padding: 8px 12px 8px 46px !important;
   }
 
   .resume-badge {
-    width: clamp(34px, 8vw, 48px) !important;
-    height: clamp(44px, 10vw, 62px) !important;
-    left: -7px !important;
+    width: 38px !important;
+    height: 48px !important;
+    left: -6px !important;
+    top: 8px !important;
   }
 
   .resume-badge-text {
-    font-size: clamp(24px, 5.5vw, 32px) !important;
+    font-size: 24px !important;
   }
 
   .resume-title {
-    font-size: clamp(24px, 7vw, 40px) !important;
+    font-size: clamp(22px, 6vw, 32px) !important;
+    line-height: 1 !important;
   }
 
   .resume-rank-label {
-    font-size: clamp(16px, 3.8vw, 24px) !important;
+    font-size: 16px !important;
   }
 
   .resume-rank-number {
-    font-size: clamp(34px, 8.5vw, 54px) !important;
+    font-size: 34px !important;
   }
 
   .resume-subtitle-bar {
-    left: 42px !important;
-    right: 8px !important;
-    height: clamp(22px, 5vw, 30px) !important;
-    bottom: 8px !important;
+    left: 46px !important;
+    right: 10px !important;
+    bottom: 6px !important;
+    height: 22px !important;
     padding: 0 10px !important;
   }
 
   .resume-subtitle {
-    font-size: clamp(14px, 3.4vw, 22px) !important;
+    font-size: clamp(12px, 3.2vw, 16px) !important;
   }
 
   .resume-detail-panel {
     position: relative !important;
     top: 0 !important;
     right: 0 !important;
-    width: min(96vw, 620px) !important;
-    min-height: 0 !important;
-    margin: 12px auto 24px auto !important;
+    width: 94vw !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin: 10px auto 30px auto !important;
     padding: 14px 12px !important;
+    box-shadow: inset 0 0 0 1px rgba(133, 244, 255, 0.2), 6px 6px 0 rgba(0, 6, 30, 0.6) !important;
+    pointer-events: auto !important;
   }
 
   .resume-detail-top {
-    grid-template-columns: 44px 1fr auto !important;
-    min-height: 64px !important;
+    grid-template-columns: 42px 1fr auto !important;
+    min-height: 58px !important;
     gap: 8px !important;
     padding: 0 10px !important;
   }
 
   .resume-detail-top-index {
-    font-size: clamp(28px, 6vw, 38px) !important;
+    font-size: 28px !important;
   }
 
   .resume-detail-top-title {
-    font-size: clamp(22px, 5vw, 32px) !important;
+    font-size: clamp(20px, 5.2vw, 26px) !important;
   }
 
   .resume-detail-top-progress {
-    font-size: clamp(24px, 6vw, 36px) !important;
+    font-size: clamp(20px, 5.2vw, 28px) !important;
+  }
+
+  .resume-detail-list {
+    gap: 6px !important;
+    margin-top: 10px !important;
   }
 
   .resume-detail-row {
-    min-height: 44px !important;
+    min-height: 46px !important;
     gap: 8px !important;
-    grid-template-columns: 34px 1fr auto !important;
-    padding: 0 8px !important;
+    grid-template-columns: 32px 1fr auto !important;
+    padding: 0 10px !important;
   }
 
   .resume-detail-row-index {
-    font-size: clamp(18px, 4vw, 24px) !important;
+    font-size: 18px !important;
   }
 
   .resume-detail-row-title {
-    font-size: clamp(16px, 3.9vw, 22px) !important;
+    font-size: clamp(14px, 3.8vw, 18px) !important;
   }
 
   .resume-detail-status {
-    font-size: clamp(14px, 3.2vw, 18px) !important;
+    font-size: 14px !important;
     padding: 4px 8px !important;
   }
 
+  .resume-detail-bottom {
+    margin-top: 12px !important;
+    padding: 12px !important;
+  }
+
   .resume-detail-bottom-title {
-    font-size: clamp(20px, 4.8vw, 28px) !important;
+    font-size: 20px !important;
+    margin-bottom: 6px !important;
   }
 
   .resume-detail-bullet {
-    font-size: clamp(14px, 3.6vw, 18px) !important;
+    font-size: clamp(13px, 3.4vw, 16px) !important;
+    line-height: 1.2 !important;
   }
 
-  .sc-root {
-    padding-top: 10px !important;
+  .resume-mobile-controls {
+    position: fixed !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    z-index: 60 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    pointer-events: all !important;
+  }
+
+  /* 3. About Me Mobile */
+  .sc-main-portrait-shell {
+    top: 6vh !important;
+    right: -8vw !important;
+    width: 46vw !important;
+    height: 38vh !important;
+    z-index: 12 !important;
+  }
+
+  .sc-main-portrait {
+    object-position: center top !important;
+  }
+
+  .sc-reveal-panel {
+    top: 42vh !important;
+    left: 3vw !important;
+    right: 3vw !important;
+    width: auto !important;
+    height: 48vh !important;
+    max-height: 50vh !important;
+    z-index: 14 !important;
+    transform: rotate(0deg) !important;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%) !important;
+    overflow-y: auto !important;
+  }
+
+  .sc-reveal-panel.mounted {
+    transform: rotate(0deg) !important;
+  }
+
+  .sc-reveal-upper-bar {
+    top: 8% !important;
+    height: auto !important;
+    max-height: 48% !important;
+    width: 96% !important;
+    left: 2% !important;
     gap: 3px !important;
+  }
+
+  .sc-reveal-upper-line {
+    font-size: clamp(13px, 3.4vw, 16px) !important;
+    line-height: 1.15 !important;
+    padding: 3px 10px !important;
+    word-break: break-word !important;
+  }
+
+  .sc-reveal-lower-bar {
+    top: auto !important;
+    bottom: 8% !important;
+    width: 92% !important;
+    height: auto !important;
+    font-size: clamp(13px, 3.4vw, 16px) !important;
+    line-height: 1.2 !important;
+    padding: 8px 12px !important;
+  }
+
+  /* 4. CP / Socials Screen Mobile */
+  .sc-root {
+    padding-top: 8px !important;
+    gap: 3px !important;
+    z-index: 10 !important;
   }
 
   .sc-bar,
   .sc-bar-red {
-    width: min(96vw, 560px) !important;
-    height: clamp(48px, 8.5vh, 58px) !important;
+    width: min(96vw, 480px) !important;
+    height: 50px !important;
   }
 
   .sc-bar-outer.active .sc-bar,
   .sc-bar-outer.active .sc-bar-red {
-    height: clamp(62px, 10vh, 72px) !important;
+    height: 64px !important;
   }
 
   .sc-bar-content {
@@ -300,12 +421,13 @@ body {
   }
 
   .sc-role {
-    font-size: clamp(22px, 4.8vw, 30px) !important;
-    padding: 0 8px 0 4px !important;
+    font-size: 26px !important;
+    padding: 0 8px 0 2px !important;
   }
 
   .sc-main {
-    padding-left: clamp(44px, 11vw, 66px) !important;
+    padding-left: clamp(38px, 9vw, 56px) !important;
+    gap: 1px !important;
   }
 
   .sc-main-top {
@@ -313,134 +435,175 @@ body {
   }
 
   .sc-icon {
-    font-size: clamp(14px, 3vw, 18px) !important;
+    font-size: 16px !important;
     width: 20px !important;
   }
 
   .sc-label {
-    font-size: clamp(14px, 3.6vw, 18px) !important;
+    font-size: clamp(16px, 4.2vw, 20px) !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .sc-handle {
+    font-size: 11px !important;
     letter-spacing: 1px !important;
   }
 
   .sc-stats {
-    display: none !important;
+    gap: 4px !important;
+    padding-right: 6px !important;
+  }
+
+  .sc-stat-tag {
+    font-size: 8px !important;
+    padding: 0 3px !important;
+  }
+
+  .sc-stat-num {
+    font-size: 16px !important;
   }
 
   .sc-char {
-    left: clamp(34px, 8vw, 50px) !important;
-    max-width: clamp(62px, 14vw, 88px) !important;
-  }
-
-  .sc-info-bar-wrap {
-    left: 2.5% !important;
-    right: 2.5% !important;
-    width: auto !important;
-    height: clamp(34px, 5.8vh, 40px) !important;
-  }
-
-  .sc-info-bar-icon {
-    margin-left: 8px !important;
-  }
-
-  .sc-info-bar-text {
-    font-size: clamp(14px, 3.2vw, 18px) !important;
-    letter-spacing: 1px !important;
-    padding: 0 8px !important;
-  }
-
-  .sc-info-bar-box {
-    font-size: clamp(12px, 2.8vw, 16px) !important;
-    padding: 0 8px !important;
-  }
-
-  .sc-info-bar-count {
-    font-size: clamp(13px, 3vw, 16px) !important;
-    margin-right: 10px !important;
+    left: clamp(30px, 7vw, 44px) !important;
+    max-width: clamp(52px, 12vw, 76px) !important;
   }
 
   .sc-right-nav {
-    left: 8px !important;
+    left: 10px !important;
     right: auto !important;
-    top: 6px !important;
+    top: 4px !important;
     gap: 3px !important;
+    z-index: 30 !important;
   }
 
   .sc-right-nav .sc-nav-btn {
-    font-size: clamp(36px, 9vw, 52px) !important;
+    font-size: clamp(34px, 8.5vw, 48px) !important;
     padding: 0 2px !important;
     -webkit-text-stroke: 1px #000 !important;
   }
 
-  .sc-right-nav .sc-nav-label,
-  .sc-right-nav .sc-nav-dot {
-    display: none !important;
+  .sc-right-nav .sc-nav-label {
+    font-size: 18px !important;
+    padding: 0 4px !important;
   }
 
   .sc-right-nav .sc-nav-arrow {
     font-size: 16px !important;
   }
 
-  .sc-main-portrait-shell {
-    width: 44vw !important;
-    right: -10vw !important;
+  .sc-info-panel {
+    top: 36vh !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 58px !important;
+    width: auto !important;
+    gap: 4px !important;
+    padding: 4px 0 !important;
+    pointer-events: auto !important;
   }
 
-  .sc-reveal-panel {
-    width: 96vw !important;
-    left: -22vw !important;
-    top: 42vh !important;
-    height: 56vh !important;
-    transform: translateX(0) rotate(-14deg) !important;
+  .sc-info-bar-wrap {
+    height: 40px !important;
+    pointer-events: auto !important;
   }
 
-  .sc-reveal-upper-line {
-    font-size: clamp(13px, 3.2vw, 16px) !important;
-    line-height: 1.1 !important;
-    padding: 0 12px !important;
+  .sc-info-bar {
+    border-radius: 6px !important;
   }
 
-  .sc-reveal-lower-bar {
-    width: 60% !important;
-    font-size: clamp(14px, 3.2vw, 17px) !important;
-    padding-left: 10px !important;
+  .sc-info-bar-icon {
+    margin-left: 8px !important;
+    height: 50% !important;
+  }
+
+  .sc-info-bar-text {
+    font-size: clamp(13px, 3.3vw, 16px) !important;
+    letter-spacing: 1px !important;
+    padding: 0 6px !important;
+  }
+
+  .sc-info-bar-box {
+    font-size: 12px !important;
+    padding: 0 6px !important;
+    height: 65% !important;
+    margin-right: 4px !important;
+  }
+
+  .sc-info-bar-count {
+    font-size: 14px !important;
+    margin-right: 8px !important;
   }
 
   .sc-footer {
-    bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    display: none !important;
+  }
+
+  .sc-mobile-controls {
+    position: fixed !important;
+    left: 8px !important;
     right: 8px !important;
-    gap: 2px !important;
+    bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    z-index: 60 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    pointer-events: all !important;
   }
 
-  .sc-footer-row {
-    font-size: 10px !important;
-    letter-spacing: 1px !important;
-    gap: 5px !important;
-  }
-
-  .sc-footer-key {
-    padding: 1px 4px !important;
-    font-size: 9px !important;
+  .sc-mobile-btn {
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+    color: #fff !important;
+    font-family: 'Bebas Neue', sans-serif !important;
+    letter-spacing: 1.5px !important;
+    font-size: 14px !important;
+    padding: 8px 16px !important;
+    border-radius: 8px !important;
+    min-width: 90px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important;
   }
 }
 
-@media (max-width: 430px) {
+/* ─────────────────────────────────────────────────────────────
+   SMALL PHONES / SE / GALAXY A-SERIES (<= 400px)
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 400px) {
   .p3-menu {
-    transform: scale(0.54);
+    transform: scale(0.56) !important;
+    right: 0px !important;
   }
 
   .p3-name-tag {
-    font-size: clamp(34px, 10vw, 48px) !important;
+    font-size: 38px !important;
   }
 
-  .sc-main-portrait-shell {
-    width: 46vw !important;
-    right: -12vw !important;
+  .resume-card {
+    height: 62px !important;
   }
 
-  .sc-reveal-panel {
-    top: 45vh !important;
-    left: -34vw !important;
-    width: 122vw !important;
-    height: 52vh !important;
+  .resume-title {
+    font-size: 20px !important;
+  }
+
+  .resume-subtitle {
+    font-size: 11px !important;
+  }
+
+  .sc-bar,
+  .sc-bar-red {
+    width: 98vw !important;
+  }
+
+  .sc-label {
+    font-size: 15px !important;
+  }
+
+  .sc-info-panel {
+    top: 38vh !important;
+  }
+
+  .sc-info-bar-text {
+    font-size: 12px !important;
   }
 }
